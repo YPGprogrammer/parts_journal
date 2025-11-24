@@ -1,4 +1,3 @@
-"""Утилиты для работы с БД в Streamlit"""
 from sqlalchemy.orm import Session
 import streamlit as st
 from .db import SessionLocal, init_db

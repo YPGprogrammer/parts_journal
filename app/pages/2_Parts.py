@@ -1,4 +1,3 @@
-"""Parts - CRUD операции для запчастей"""
 import streamlit as st
 import pandas as pd
 from core.utils import get_services

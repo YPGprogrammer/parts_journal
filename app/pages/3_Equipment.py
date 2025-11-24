@@ -1,9 +1,8 @@
-"""Equipment - CRUD операции для оборудования"""
 import streamlit as st
 import pandas as pd
 from core.utils import get_services
 
-st.set_page_config(page_title="Оборудование", page_icon="🏭", layout="wide")
+st.set_page_config(page_title="Оборудование", layout="wide")
 st.title("Управление оборудованием")
 
 services = get_services()

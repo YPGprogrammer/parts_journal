@@ -1,4 +1,3 @@
-"""Dashboard - сводка по статусам и графики"""
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -12,7 +11,7 @@ plt.rcParams['font.family'] = 'DejaVu Sans'
 plt.rcParams['figure.figsize'] = (10, 6)
 
 st.set_page_config(page_title="Dashboard", layout="wide")
-st.title("Dashboard - Сводка по статусам")
+st.title("Сводка по статусам")
 
 services = get_services()
 
