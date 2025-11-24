@@ -77,7 +77,7 @@ for part in parts:
         # Агрегат: wear % по детали
         wear_percentage_data.append({
             'Запчасть': part.name,
-            'Износ %': wear_percentage,
+            'Запас прочности %': wear_percentage,
             'Зона': zone
         })
 
@@ -107,7 +107,7 @@ for part in parts:
                         'Дата': check_date,
                         'Оборудование': equipment_name,
                         'Запчасть': part.name,
-                        'Износ %': wear_pct
+                        'Запас прочности %': wear_pct
                     })
 
         if zone == "green":
@@ -198,14 +198,14 @@ if wear_data:
             equipment_data = equipment_data.sort_values('Дата')
 
             # Группируем по дате и берем средний износ
-            daily_wear = equipment_data.groupby('Дата')['Износ %'].mean().reset_index()
+            daily_wear = equipment_data.groupby('Дата')['Запас прочности %'].mean().reset_index()
 
-            ax2.plot(daily_wear['Дата'], daily_wear['Износ %'],
+            ax2.plot(daily_wear['Дата'], daily_wear['Запас прочности %'],
                     marker='o', label=equipment, linewidth=2, markersize=4,
                     color=colors_equipment[idx])
 
         ax2.set_xlabel('Дата', fontsize=12, fontweight='bold')
-        ax2.set_ylabel('Износ, %', fontsize=12, fontweight='bold')
+        ax2.set_ylabel('Запас прочности, %', fontsize=12, fontweight='bold')
         ax2.set_title('Динамика износа запчастей по оборудованию', fontsize=14, fontweight='bold', pad=20)
         ax2.legend(loc='best', fontsize=9)
         ax2.grid(True, alpha=0.3, linestyle='--')
@@ -295,10 +295,10 @@ if wear_data:
     col1, col2 = st.columns(2)
 
     with col1:
-        st.write("**Износ % по каждой детали:**")
+        st.write("**Запас прочности % по каждой детали:**")
         if not df_wear_pct.empty:
-            display_wear = df_wear_pct[['Запчасть', 'Износ %', 'Зона']].copy()
-            display_wear = display_wear.sort_values('Износ %')
+            display_wear = df_wear_pct[['Запчасть', 'Запас прочности %', 'Зона']].copy()
+            display_wear = display_wear.sort_values('Запас прочности %')
             st.dataframe(display_wear, use_container_width=True, hide_index=True)
         else:
             st.info("Нет данных")
