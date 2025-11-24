@@ -33,7 +33,14 @@ def compute_wear(part_useful_life_days: int, installation_date: date, replacemen
     if qty_in_stock == 0 and lead_time_days > 0:
         remaining_days = remaining_days - lead_time_days
 
-    percentage_left = remaining_days / part_useful_life_days if part_useful_life_days > 0 else 0
+    # Рассчитываем процент, но не допускаем отрицательных значений
+    if part_useful_life_days > 0:
+        percentage_left = max(0, remaining_days / part_useful_life_days)
+    else:
+        percentage_left = 0
+
+    # Также ограничиваем remaining_days до 0, если он отрицательный
+    remaining_days = max(0, remaining_days)
 
     if percentage_left > 0.25:
         zone = "green"

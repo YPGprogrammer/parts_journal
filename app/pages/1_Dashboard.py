@@ -97,7 +97,11 @@ for part in parts:
                 if check_date <= date.today():
                     used_days = (check_date - installation_date).days
                     remaining = part.useful_life_days - used_days
-                    wear_pct = (remaining / part.useful_life_days * 100) if part.useful_life_days > 0 else 0
+                    # Не допускаем отрицательных процентов
+                    if part.useful_life_days > 0:
+                        wear_pct = max(0, (remaining / part.useful_life_days * 100))
+                    else:
+                        wear_pct = 0
 
                     wear_timeline_data.append({
                         'Дата': check_date,
