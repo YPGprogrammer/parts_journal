@@ -58,21 +58,22 @@ streamlit run app/main.py
 ### Структура проекта
 
 parts_journal/
-  app/
-    main.py              # Точка входа приложения
-    core/
-       models.py        # SQLAlchemy модели (Equipment, Part, Workshop, ReplacementType, ReplacementLog)
-       db.py            # Настройка подключения к БД (SQLite)
-       services.py      # Бизнес-логика и сервисный слой
-       utils.py         # Утилиты для работы с БД в Streamlit
-    pages/               # Страницы Streamlit
-       1_Dashboard.py   # Сводка и графики
-       2_Parts.py       # Управление запчастями
-       3_Equipment.py   # Управление оборудованием
-       4_Replacements.py # Журнал замен
-       5_ProcurementPlan.py # План закупок
-    data/                    # Директория для SQLite БД
-    requirements.txt         # Зависимости проекта
+├── app/
+├── main.py                  # Точка входа приложения
+├── core/
+│   ├── models.py            # SQLAlchemy модели (Equipment, Part, Workshop, ReplacementType, ReplacementLog)
+│   ├── db.py                # Настройка подключения к БД (SQLite)
+│   ├── services.py          # Бизнес-логика и сервисный слой
+│   └── utils.py             # Утилиты для работы с БД в Streamlit
+├── pages/                   # Страницы Streamlit
+│   ├── 1_Dashboard.py       # Сводка и графики
+│   ├── 2_Parts.py           # Управление запчастями
+│   ├── 3_Equipment.py       # Управление оборудованием
+│   ├── 4_Replacements.py    # Журнал замен
+│   └── 5_ProcurementPlan.py # План закупок
+├── data/                    # Директория для SQLite БД
+└── requirements.txt         # Зависимости проекта
+
 
 ### Технологический стек
 
