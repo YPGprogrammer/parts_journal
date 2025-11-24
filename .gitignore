@@ -2,3 +2,12 @@
 __pycache__/
 *.log
 pj_env/
+
+# SQLite databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Streamlit cache
+.streamlit/
+__pycache__/
