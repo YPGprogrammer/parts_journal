@@ -1,17 +1,27 @@
 import streamlit as st
-from core.db import init_db, get_session
-from core.services import ServiceContainer
+from core.utils import init_app
 
-def main():
-    init_db()
+# Инициализация приложения
+init_app()
 
-    if "services" not in st.session_state:
-        session = get_session()
-        st.session_state["services"] = ServiceContainer(session)
+# Настройка страницы
+st.set_page_config(
+    page_title="Журнал запасных частей",
+    layout="wide"
+)
 
-    st.title("Журнал запасных частей")
+st.write("# Добро пожаловать в приложение Журнал Запасных Частей!")
 
-if __name__ == "__main__":
-    main()
+st.markdown(
+    """
+    Журнал запасных частей - приложение созданное в качестве тестового задания на позицию Python_developer.
+    Оно позволяет вести учёт срока службы запчастей и планирования их замен.
 
-
+    Используйте навигацию слева для перехода между разделами:
+    - **Dashboard** - сводка по статусам и графики
+    - **Parts** - управление запчастями
+    - **Equipment** - управление оборудованием
+    - **Replacements** - журнал замен
+    - **Procurement Plan** - план закупок
+    """
+)

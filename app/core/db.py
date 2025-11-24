@@ -1,26 +1,14 @@
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, scoped_session
+from sqlalchemy.orm import sessionmaker
 from .models import Base
+import os
 
-DB_URL = "sqlite:///./data/spares.db"
+DB_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "data", "spares.db")
 
-engine = create_engine(DB_URL, echo=False)
+engine = create_engine(f"sqlite:///{DB_PATH}", echo=False)
 
-# фабрика обычных сессий
 SessionLocal = sessionmaker(bind=engine)
 
-# scoped_session — у каждого пользователя свой контекст
-Session = scoped_session(SessionLocal)
-
-
+# Создание таблиц при первом запуске
 def init_db():
-    """Создаёт таблицы, если их нет."""
-    Base.metadata.create_all(engine)
-
-
-def get_session():
-    """
-    Возвращает сессию для текущего запроса Streamlit.
-    Используется при инициализации сервисов.
-    """
-    return Session()
+    Base.metadata.create_all(bind=engine)
